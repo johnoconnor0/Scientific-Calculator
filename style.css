@@ -5,6 +5,7 @@ body {
     background-color: var(--bg-color, #f4f4f9);
     color: var(--text-color, #000);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 50px auto;
@@ -17,7 +18,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 350px;
+    width: 400px;
 }
 
 /* Display */
@@ -62,6 +63,20 @@ body {
     background: #0056b3;
 }
 
+#theme-button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#theme-button:hover {
+    background: #0056b3;
+}
+
 /* Error display */
 .error {
     color: red;
@@ -87,4 +102,15 @@ body {
 .graphing-section {
     display: flex;
     flex-direction: column;
+    width: 400px;
+}
+
+
+.graphing-section .button {
+    margin-top: 20px;
+}
+
+.calculation-container {
+    display: flex;
+    gap: 25px;
 }

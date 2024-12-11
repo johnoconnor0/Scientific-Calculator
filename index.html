@@ -12,72 +12,76 @@
         <button id="theme-button">Light/Dark Mode</button>
     </div>
 
-    <!-- Calculator Container -->
-    <div class="calculator">
-        <!-- Display Area -->
-        <textarea id="display" class="display" rows="2" disabled></textarea>
-        <div id="error-message" class="error"></div>
+    <div class="calculation-container">
 
-        <!-- Buttons -->
-        <div class="buttons">
-            <button class="button" onclick="appendValue('7')">7</button>
-            <button class="button" onclick="appendValue('8')">8</button>
-            <button class="button" onclick="appendValue('9')">9</button>
-            <button class="button function" onclick="appendValue('/')">&divide;</button>
+        <!-- Calculator Container -->
+        <div class="calculator">
+            <!-- Display Area -->
+            <textarea id="display" class="display" rows="2" disabled></textarea>
+            <div id="error-message" class="error"></div>
 
-            <button class="button" onclick="appendValue('4')">4</button>
-            <button class="button" onclick="appendValue('5')">5</button>
-            <button class="button" onclick="appendValue('6')">6</button>
-            <button class="button function" onclick="appendValue('*')">&times;</button>
+            <!-- Buttons -->
+            <div class="buttons">
+                <button class="button" onclick="appendValue('7')">7</button>
+                <button class="button" onclick="appendValue('8')">8</button>
+                <button class="button" onclick="appendValue('9')">9</button>
+                <button class="button function" onclick="appendValue('/')">&divide;</button>
 
-            <button class="button" onclick="appendValue('1')">1</button>
-            <button class="button" onclick="appendValue('2')">2</button>
-            <button class="button" onclick="appendValue('3')">3</button>
-            <button class="button function" onclick="appendValue('-')">&minus;</button>
+                <button class="button" onclick="appendValue('4')">4</button>
+                <button class="button" onclick="appendValue('5')">5</button>
+                <button class="button" onclick="appendValue('6')">6</button>
+                <button class="button function" onclick="appendValue('*')">&times;</button>
 
-            <button class="button" onclick="appendValue('0')">0</button>
-            <button class="button" onclick="appendValue('.')">.</button>
-            <button class="button equal" onclick="calculate()">=</button>
-            <button class="button function" onclick="appendValue('+')">+</button>
+                <button class="button" onclick="appendValue('1')">1</button>
+                <button class="button" onclick="appendValue('2')">2</button>
+                <button class="button" onclick="appendValue('3')">3</button>
+                <button class="button function" onclick="appendValue('-')">&minus;</button>
 
-            <button class="button clear" onclick="clearDisplay()">C</button>
-            <button class="button function" onclick="appendValue('Math.sin(')">sin</button>
-            <button class="button function" onclick="appendValue('Math.cos(')">cos</button>
-            <button class="button function" onclick="appendValue('Math.tan(')">tan</button>
+                <button class="button" onclick="appendValue('0')">0</button>
+                <button class="button" onclick="appendValue('.')">.</button>
+                <button class="button equal" onclick="calculate()">=</button>
+                <button class="button function" onclick="appendValue('+')">+</button>
 
-            <button class="button function" onclick="appendValue('Math.log(')">ln</button>
-            <button class="button function" onclick="appendValue('Math.sqrt(')">√</button>
-            <button class="button function" onclick="appendValue('Math.pow(')">^</button>
-            <button class="button function" onclick="backspace()">⌫</button>
+                <button class="button clear" onclick="clearDisplay()">C</button>
+                <button class="button function" onclick="appendValue('Math.sin(')">sin</button>
+                <button class="button function" onclick="appendValue('Math.cos(')">cos</button>
+                <button class="button function" onclick="appendValue('Math.tan(')">tan</button>
 
-            <button class="button function" onclick="appendValue('Math.sinh(')">sinh</button>
-            <button class="button function" onclick="appendValue('Math.cosh(')">cosh</button>
-            <button class="button function" onclick="appendValue('Math.tanh(')">tanh</button>
-            <button class="button function" onclick="appendValue('Math.exp(')">e<sup>x</sup></button>
+                <button class="button function" onclick="appendValue('Math.log(')">ln</button>
+                <button class="button function" onclick="appendValue('Math.sqrt(')">√</button>
+                <button class="button function" onclick="appendValue('Math.pow(')">^</button>
+                <button class="button function" onclick="backspace()">⌫</button>
 
-            <button class="button function" onclick="appendValue('factorial(')">n!</button>
-            <button class="button function" id="deg-rad-toggle" onclick="toggleDegRad()">Deg</button>
-            <button class="button" onclick="appendValue('(')">(</button>
-            <button class="button" onclick="appendValue(')')">)</button>
+                <button class="button function" onclick="appendValue('Math.sinh(')">sinh</button>
+                <button class="button function" onclick="appendValue('Math.cosh(')">cosh</button>
+                <button class="button function" onclick="appendValue('Math.tanh(')">tanh</button>
+                <button class="button function" onclick="appendValue('Math.exp(')">e<sup>x</sup></button>
+
+                <button class="button function" onclick="appendValue('factorial(')">n!</button>
+                <button class="button function" id="deg-rad-toggle" onclick="toggleDegRad()">Deg</button>
+                <button class="button" onclick="appendValue('(')">(</button>
+                <button class="button" onclick="appendValue(')')">)</button>
+            </div>
+
+            <!-- Memory Functions -->
+            <div class="memory">
+                <button class="button function" onclick="memoryStore(display.value)">MS</button>
+                <button class="button function" onclick="memoryRecall()">MR</button>
+                <button class="button function" onclick="memoryClear()">MC</button>
+            </div>
+
+            <!-- History -->
+            <div id="history" class="history"></div>
         </div>
 
-        <!-- Memory Functions -->
-        <div class="memory">
-            <button class="button function" onclick="memoryStore(display.value)">MS</button>
-            <button class="button function" onclick="memoryRecall()">MR</button>
-            <button class="button function" onclick="memoryClear()">MC</button>
+        <!-- Graphing Section -->
+        <div class="graphing-section">
+            <h2>Graphing</h2>
+            <canvas id="graph-canvas" width="400" height="400"></canvas>
+            <input id="graph-equation" type="text" placeholder="Enter equation (e.g., x*x + 2)" />
+            <button class="button" onclick="plotGraph(document.getElementById('graph-equation').value)">Plot Graph</button>
         </div>
 
-        <!-- History -->
-        <div id="history" class="history"></div>
-    </div>
-
-    <!-- Graphing Section -->
-    <div class="graphing-section">
-        <h2>Graphing</h2>
-        <canvas id="graph-canvas" width="400" height="400"></canvas>
-        <input id="graph-equation" type="text" placeholder="Enter equation (e.g., x*x + 2)" />
-        <button class="button" onclick="plotGraph(document.getElementById('graph-equation').value)">Plot Graph</button>
     </div>
 
     <!-- Scripts -->
