@@ -1,0 +1,30 @@
+{
+    "en": {
+        "clear": "Clear",
+        "backspace": "Backspace",
+        "equals": "Equals",
+        "sin": "Sine",
+        "cos": "Cosine",
+        "tan": "Tangent",
+        "log": "Logarithm",
+        "sqrt": "Square Root",
+        "factorial": "Factorial",
+        "rad": "Radians",
+        "deg": "Degrees",
+        "themeToggle": "Toggle Theme"
+    },
+    "es": {
+        "clear": "Borrar",
+        "backspace": "Retroceso",
+        "equals": "Igual",
+        "sin": "Seno",
+        "cos": "Coseno",
+        "tan": "Tangente",
+        "log": "Logaritmo",
+        "sqrt": "Raíz Cuadrada",
+        "factorial": "Factorial",
+        "rad": "Radianes",
+        "deg": "Grados",
+        "themeToggle": "Cambiar Tema"
+    }
+}

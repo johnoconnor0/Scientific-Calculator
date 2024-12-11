@@ -3,146 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scientific Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-        }
-
-        .calculator {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 300px;
-        }
-
-        .display {
-            width: 100%;
-            height: 50px;
-            border: none;
-            margin-bottom: 20px;
-            padding: 10px;
-            font-size: 1.5em;
-            text-align: right;
-            border-radius: 5px;
-            background-color: #f0f0f0;
-            box-sizing: border-box;
-        }
-
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .button {
-            padding: 15px;
-            font-size: 1.2em;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        .button.function {
-            background-color: #28a745;
-        }
-
-        .button.function:hover {
-            background-color: #1e7e34;
-        }
-
-        .button.clear {
-            background-color: #dc3545;
-        }
-
-        .button.clear:hover {
-            background-color: #bd2130;
-        }
-
-        .button.equal {
-            background-color: #ffc107;
-            grid-column: span 2;
-        }
-
-        .button.equal:hover {
-            background-color: #e0a800;
-        }
-    </style>
+    <title>Advanced Scientific Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="calculator">
-    <input type="text" id="display" class="display" disabled />
-    <div class="buttons">
-        <button class="button" onclick="appendValue('7')">7</button>
-        <button class="button" onclick="appendValue('8')">8</button>
-        <button class="button" onclick="appendValue('9')">9</button>
-        <button class="button function" onclick="appendValue('/')">&divide;</button>
-
-        <button class="button" onclick="appendValue('4')">4</button>
-        <button class="button" onclick="appendValue('5')">5</button>
-        <button class="button" onclick="appendValue('6')">6</button>
-        <button class="button function" onclick="appendValue('*')">&times;</button>
-
-        <button class="button" onclick="appendValue('1')">1</button>
-        <button class="button" onclick="appendValue('2')">2</button>
-        <button class="button" onclick="appendValue('3')">3</button>
-        <button class="button function" onclick="appendValue('-')">&minus;</button>
-
-        <button class="button" onclick="appendValue('0')">0</button>
-        <button class="button" onclick="appendValue('.')">.</button>
-        <button class="button equal" onclick="calculate()">=</button>
-        <button class="button function" onclick="appendValue('+')">+</button>
-
-        <button class="button clear" onclick="clearDisplay()">C</button>
-        <button class="button function" onclick="appendValue('Math.sin(')">sin</button>
-        <button class="button function" onclick="appendValue('Math.cos(')">cos</button>
-        <button class="button function" onclick="appendValue('Math.tan(')">tan</button>
-
-        <button class="button function" onclick="appendValue('Math.log(')">ln</button>
-        <button class="button function" onclick="appendValue('Math.sqrt(')">√</button>
-        <button class="button function" onclick="appendValue('Math.pow(')">^</button>
-        <button class="button function" onclick="backspace()">⌫</button>
+    <!-- Theme Toggle Button -->
+    <div class="theme-toggle">
+        <button id="theme-button">Light/Dark Mode</button>
     </div>
-</div>
 
-<script>
-    const display = document.getElementById('display');
+    <!-- Calculator Container -->
+    <div class="calculator">
+        <!-- Display Area -->
+        <textarea id="display" class="display" rows="2" disabled></textarea>
+        <div id="error-message" class="error"></div>
 
-    function appendValue(value) {
-        display.value += value;
-    }
+        <!-- Buttons -->
+        <div class="buttons">
+            <button class="button" onclick="appendValue('7')">7</button>
+            <button class="button" onclick="appendValue('8')">8</button>
+            <button class="button" onclick="appendValue('9')">9</button>
+            <button class="button function" onclick="appendValue('/')">&divide;</button>
 
-    function clearDisplay() {
-        display.value = '';
-    }
+            <button class="button" onclick="appendValue('4')">4</button>
+            <button class="button" onclick="appendValue('5')">5</button>
+            <button class="button" onclick="appendValue('6')">6</button>
+            <button class="button function" onclick="appendValue('*')">&times;</button>
 
-    function backspace() {
-        display.value = display.value.slice(0, -1);
-    }
+            <button class="button" onclick="appendValue('1')">1</button>
+            <button class="button" onclick="appendValue('2')">2</button>
+            <button class="button" onclick="appendValue('3')">3</button>
+            <button class="button function" onclick="appendValue('-')">&minus;</button>
 
-    function calculate() {
-        try {
-            display.value = eval(display.value);
-        } catch (error) {
-            alert('Invalid Expression');
-            clearDisplay();
-        }
-    }
-</script>
+            <button class="button" onclick="appendValue('0')">0</button>
+            <button class="button" onclick="appendValue('.')">.</button>
+            <button class="button equal" onclick="calculate()">=</button>
+            <button class="button function" onclick="appendValue('+')">+</button>
+
+            <button class="button clear" onclick="clearDisplay()">C</button>
+            <button class="button function" onclick="appendValue('Math.sin(')">sin</button>
+            <button class="button function" onclick="appendValue('Math.cos(')">cos</button>
+            <button class="button function" onclick="appendValue('Math.tan(')">tan</button>
+
+            <button class="button function" onclick="appendValue('Math.log(')">ln</button>
+            <button class="button function" onclick="appendValue('Math.sqrt(')">√</button>
+            <button class="button function" onclick="appendValue('Math.pow(')">^</button>
+            <button class="button function" onclick="backspace()">⌫</button>
+
+            <button class="button function" onclick="appendValue('Math.sinh(')">sinh</button>
+            <button class="button function" onclick="appendValue('Math.cosh(')">cosh</button>
+            <button class="button function" onclick="appendValue('Math.tanh(')">tanh</button>
+            <button class="button function" onclick="appendValue('Math.exp(')">e<sup>x</sup></button>
+
+            <button class="button function" onclick="appendValue('factorial(')">n!</button>
+            <button class="button function" id="deg-rad-toggle" onclick="toggleDegRad()">Deg</button>
+            <button class="button" onclick="appendValue('(')">(</button>
+            <button class="button" onclick="appendValue(')')">)</button>
+        </div>
+
+        <!-- Memory Functions -->
+        <div class="memory">
+            <button class="button function" onclick="memoryStore(display.value)">MS</button>
+            <button class="button function" onclick="memoryRecall()">MR</button>
+            <button class="button function" onclick="memoryClear()">MC</button>
+        </div>
+
+        <!-- History -->
+        <div id="history" class="history"></div>
+    </div>
+
+    <!-- Graphing Section -->
+    <div class="graphing-section">
+        <h2>Graphing</h2>
+        <canvas id="graph-canvas" width="400" height="400"></canvas>
+        <input id="graph-equation" type="text" placeholder="Enter equation (e.g., x*x + 2)" />
+        <button class="button" onclick="plotGraph(document.getElementById('graph-equation').value)">Plot Graph</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="theme.js"></script>
+    <script src="math-utils.js"></script>
+    <script src="graph.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
